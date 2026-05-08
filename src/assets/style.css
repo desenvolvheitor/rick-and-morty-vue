@@ -1,3 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --primary-color: #181a21;
+    --secondary-color: #0f1115;
+    --tertiary-color: #343434;
+    --quaternary-color: #1d1f26;
+    --text-color: #ffffff;
+    --sec-text-color: #828897;
+    --card-radius: 14px;
+    --alive-color: #4afd65;
+    --dead-color: #d4312d;
+    --unknown-color: #828897;
+}
+
+@layer utilities {
+    .text-shadow-glow {
+        text-shadow: 0 0 8px var(--alive-color);
+    }
+}
