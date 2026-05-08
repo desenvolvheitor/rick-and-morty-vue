@@ -22,3 +22,14 @@
         text-shadow: 0 0 8px var(--alive-color);
     }
 }
+
+@layer components {
+
+    .campo-filtro {
+        @apply w-full h-10 mt-2 p-[5px_10px] rounded-md border border-tertiary bg-quaternary text-sec-text outline-none transition-all duration-200 hover:border-alive focus:border-alive cursor-pointer;
+    }
+
+    .label-filtro {
+        @apply text-main-text font-medium mb-1;
+    }
+}
