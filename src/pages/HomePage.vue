@@ -4,12 +4,17 @@ import SideBar from '@components/SideBar.vue';
 </script>
 
 <template>
-  <Header />
-  <div class="grid lg:grid-cols-[20%_80%] h-[94dvh] w-full">
-    <SideBar />
+  <div class="flex flex-col h-screen overflow-hidden">
 
-    <main class="bg-secondary p-[30px_40px] overflow-y-auto min-h-full">
-      <router-view />
-    </main>
+    <Header />
+
+    <div class="flex-1 grid lg:grid-cols-[20%_80%] w-full overflow-hidden">
+      <SideBar />
+
+      <main class="bg-secondary p-[30px_40px] overflow-y-auto">
+        <router-view />
+      </main>
+    </div>
+
   </div>
 </template>
