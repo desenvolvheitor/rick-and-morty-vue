@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import Header from '@components/Header.vue';
 import SideBar from '@components/SideBar.vue';
+import { usePersonagemStore } from '@/shared/stores/personagemStore';
+
+import { onMounted } from 'vue';
+
+const personagemStore = usePersonagemStore();
+onMounted(() => personagemStore.buscarPersonagens());
 </script>
 
 <template>
