@@ -4,13 +4,6 @@ import { usePersonagemStore } from '@/shared/stores/personagemStore';
 
 const personagemStore = usePersonagemStore();
 
-const limparFiltros = (): void => {
-  personagemStore.filtros.name = '';
-  personagemStore.filtros.status = '';
-  personagemStore.filtros.species = '';
-  personagemStore.filtros.gender = '';
-};
-
 let timer: ReturnType<typeof setTimeout> | undefined;
 watch(() => ({ ...personagemStore.filtros }), (novo, antigo) => {
   if (novo.page === antigo.page && personagemStore.filtros.page !== 1) {
@@ -67,7 +60,7 @@ watch(() => ({ ...personagemStore.filtros }), (novo, antigo) => {
           <option value="male">Male</option>
           <option value="unknown">Unknown</option>
         </select>
-        <button id="botao-limpar-filtros" type="button" class="bg-secondary text-sec-text rounded-md p-2 mt-4 border border-tertiary transition-all duration-300 ease-in-out hover:border-dead hover:text-dead" @click="limparFiltros">Limpar filtros</button>
+        <button id="botao-limpar-filtros" type="button" class="bg-secondary text-sec-text rounded-md p-2 mt-4 border border-tertiary transition-all duration-300 ease-in-out hover:border-dead hover:text-dead" @click="personagemStore.limparFiltros">Limpar filtros</button>
       </div>
     </form>
   </aside>
