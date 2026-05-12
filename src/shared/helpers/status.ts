@@ -4,19 +4,19 @@ export const getStatusConfig = (status: Personagem['status']): { color: string, 
 
   switch (status) {
     case 'Alive':
-      color = `text-${status.toString().toLowerCase()}`;
+      color = 'text-alive';
       emoji = '❤️';
       break;
 
     case 'Dead':
-      color = `text-${status.toString().toLowerCase()}`;
+      color = 'text-dead';
       emoji = '💀';
       break;
 
     case 'unknown':
-      color = `text-${status.toString().toLowerCase()}`;
+      color = 'text-unknown';
       emoji = '❓';
       break;
   }
-  return { color: color, emoji: emoji };
+  return { color, emoji };
 };
