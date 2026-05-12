@@ -39,12 +39,26 @@ export const usePersonagemStore = defineStore('personagem', () => {
     buscarPersonagens();
   }
 
+  function paginaAnterior(): void {
+    if (!carregando.value && filtros.page > 1) {
+      filtros.page--;
+    }
+  };
+
+  function proximaPagina(): void {
+    if (informacoesPaginacao.value && !carregando.value && filtros.page < informacoesPaginacao.value.pages) {
+      filtros.page++;
+    }
+  };
+
   return {
     listaPersonagens,
     carregando,
     filtros,
     informacoesPaginacao,
     buscarPersonagens,
-    limparFiltros
+    limparFiltros,
+    proximaPagina,
+    paginaAnterior
   };
 });
