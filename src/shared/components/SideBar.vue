@@ -20,6 +20,35 @@ watch(() => ({ ...personagemStore.filtros }), (novo, antigo) => {
     personagemStore.buscarPersonagens();
   }
 });
+
+const speciesOptions = [
+  { value: '', text: 'Todas as espécies' },
+  { value: 'alien', text: 'Alien' },
+  { value: 'animal', text: 'Animal' },
+  { value: 'cronenberg', text: 'Cronenberg' },
+  { value: 'disease', text: 'Disease' },
+  { value: 'human', text: 'Human' },
+  { value: 'humanoid', text: 'Humanoid' },
+  { value: 'mythological creature', text: 'Mythological Creature' },
+  { value: 'poopybutthole', text: 'Poopybutthole' },
+  { value: 'robot', text: 'Robot' },
+  { value: 'unknown', text: 'Unknown' }
+];
+
+const statusOptions = [
+  { value: '', text: 'Todos os status' },
+  { value: 'alive', text: 'Alive' },
+  { value: 'dead', text: 'Dead' },
+  { value: 'unknown', text: 'Unknown' }
+];
+
+const genderOptions = [
+  { value: '', text: 'Todos os gêneros' },
+  { value: 'female', text: 'Female' },
+  { value: 'genderless', text: 'Genderless' },
+  { value: 'male', text: 'Male' },
+  { value: 'unknown', text: 'Unknown' }
+];
 </script>
 
 <template>
@@ -34,31 +63,14 @@ watch(() => ({ ...personagemStore.filtros }), (novo, antigo) => {
       <div class="flex flex-col">
         <label for="status" class="label-filtro mt-4">Filtros</label>
         <select id="status" v-model="personagemStore.filtros.status" name="status" class="campo-filtro">
-          <option value="">Todos os status</option>
-          <option value="alive">Alive</option>
-          <option value="dead">Dead</option>
-          <option value="unknown">Unknown</option>
+          <option v-for="status in statusOptions" :key="status.value" :value="status.value">{{ status.text }}</option>
         </select>
         <select id="especies" v-model="personagemStore.filtros.species" name="species" class="campo-filtro">
-          <option value="">Todas as espécies</option>
-          <option value="alien">Alien</option>
-          <option value="animal">Animal</option>
-          <option value="cronenberg">Cronenberg</option>
-          <option value="disease">Disease</option>
-          <option value="human">Human</option>
-          <option value="humanoid">Humanoid</option>
-          <option value="mythological creature">Mythological Creature</option>
-          <option value="poopybutthole">Poopybutthole</option>
-          <option value="robot">Robot</option>
-          <option value="unknown">Unknown</option>
+          <option v-for="specie in speciesOptions" :key="specie.value" :value="specie.value">{{ specie.text }}</option>
         </select>
 
         <select id="generos" v-model="personagemStore.filtros.gender" name="gender" class="campo-filtro">
-          <option value="">Todos os gêneros</option>
-          <option value="female">Female</option>
-          <option value="genderless">Genderless</option>
-          <option value="male">Male</option>
-          <option value="unknown">Unknown</option>
+          <option v-for="gender in genderOptions" :key="gender.value" :value="gender.value">{{ gender.text }}</option>
         </select>
         <button id="botao-limpar-filtros" type="button" class="bg-secondary text-sec-text rounded-md p-2 mt-4 border border-tertiary transition-all duration-300 ease-in-out hover:border-dead hover:text-dead" @click="personagemStore.limparFiltros">Limpar filtros</button>
       </div>
