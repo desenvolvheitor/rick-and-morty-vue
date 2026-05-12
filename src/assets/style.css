@@ -17,6 +17,20 @@
     --unknown-color: #828897;
 }
 
+::-webkit-scrollbar {
+    background-color: var(--secondary-color);
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--tertiary-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--sec-text-color);
+}
+
 @layer utilities {
     .text-shadow-glow {
         text-shadow: 0 0 8px var(--alive-color);
