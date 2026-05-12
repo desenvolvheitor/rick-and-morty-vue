@@ -4,6 +4,7 @@ import SideBar from '@components/SideBar.vue';
 import { usePersonagemStore } from '@/shared/stores/personagemStore';
 
 import { onMounted } from 'vue';
+import ListaPersonagens from '@/shared/components/ListaPersonagens.vue';
 
 const personagemStore = usePersonagemStore();
 onMounted(() => personagemStore.buscarPersonagens());
@@ -18,6 +19,7 @@ onMounted(() => personagemStore.buscarPersonagens());
       <SideBar />
 
       <main class="bg-secondary p-[30px_40px] overflow-y-auto">
+        <ListaPersonagens />
         <router-view />
       </main>
     </div>
