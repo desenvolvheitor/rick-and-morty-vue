@@ -1,4 +1,4 @@
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import { defineStore } from 'pinia';
 import { personagemService } from '../services/personagemService';
 
@@ -6,6 +6,15 @@ export const usePersonagemStore = defineStore('personagem', () => {
   const listaPersonagens = ref<Personagem[]>([]);
   const carregando = ref<boolean>(false);
   const informacoesPaginacao = ref<RespostaApiPersonagem['info'] | null>(null);
+
+  const paginaAnteriorDisponivel = computed(() => {
+    return !carregando.value && filtros.page > 1;
+  });
+
+  const proximaPaginaDisponivel = computed(() => {
+    const totalPaginas = informacoesPaginacao.value?.pages ?? 0;
+    return !carregando.value && filtros.page < totalPaginas;
+  });
 
   const filtros = reactive<FiltrosBusca>({
     page: 1,
@@ -36,7 +45,6 @@ export const usePersonagemStore = defineStore('personagem', () => {
     filtros.status = '';
     filtros.species = '';
     filtros.gender = '';
-    buscarPersonagens();
   }
 
   function paginaAnterior(): void {
@@ -59,6 +67,8 @@ export const usePersonagemStore = defineStore('personagem', () => {
     buscarPersonagens,
     limparFiltros,
     proximaPagina,
-    paginaAnterior
+    paginaAnterior,
+    paginaAnteriorDisponivel,
+    proximaPaginaDisponivel
   };
 });
