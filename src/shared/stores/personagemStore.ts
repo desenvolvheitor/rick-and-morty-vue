@@ -5,6 +5,8 @@ import { personagemService } from '../services/personagemService';
 export const usePersonagemStore = defineStore('personagem', () => {
   const listaPersonagens = ref<Personagem[]>([]);
   const carregando = ref<boolean>(false);
+  const exibirModal = ref<boolean>(false);
+  const personagemSelecionado = ref<Personagem | null>(null);
   const informacoesPaginacao = ref<RespostaApiPersonagem['info'] | null>(null);
 
   const paginaAnteriorDisponivel = computed(() => {
@@ -37,7 +39,17 @@ export const usePersonagemStore = defineStore('personagem', () => {
     } finally {
       carregando.value = false;
     }
-  }
+  };
+
+  function selecionarPersonagem(personagem: Personagem): void {
+    personagemSelecionado.value = personagem;
+    exibirModal.value = true;
+  };
+
+  function fecharModal(): void {
+    exibirModal.value = false;
+    personagemSelecionado.value = null;
+  };
 
   function limparFiltros(): void {
     filtros.page = 1;
@@ -45,7 +57,7 @@ export const usePersonagemStore = defineStore('personagem', () => {
     filtros.status = '';
     filtros.species = '';
     filtros.gender = '';
-  }
+  };
 
   function paginaAnterior(): void {
     if (!carregando.value && filtros.page > 1) {
@@ -64,11 +76,15 @@ export const usePersonagemStore = defineStore('personagem', () => {
     carregando,
     filtros,
     informacoesPaginacao,
+    exibirModal,
+    personagemSelecionado,
+    paginaAnteriorDisponivel,
+    proximaPaginaDisponivel,
     buscarPersonagens,
     limparFiltros,
+    selecionarPersonagem,
+    fecharModal,
     proximaPagina,
-    paginaAnterior,
-    paginaAnteriorDisponivel,
-    proximaPaginaDisponivel
+    paginaAnterior
   };
 });
