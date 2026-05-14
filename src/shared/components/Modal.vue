@@ -15,9 +15,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <dialog ref="modalRef" class="fixed rounded-xl max-h-[95vh] w-[25vw] text-main-text border-none outline-none text-wrap bg-primary backdrop:bg-black/80 backdrop:backdrop-blur-sm" @click="(evento) => evento.target === modalRef && personagemStore.fecharModal()">
+  <dialog ref="modalRef" class="fixed rounded-xl max-h-[95vh] w-[25vw] text-main-text border-none outline-none text-wrap bg-primary backdrop:bg-black/80 backdrop:backdrop-blur-sm" @click.self="personagemStore.fecharModal" @close="personagemStore.fecharModal">
     <img class="w-full" :src="props.personagem.image" :alt="props.personagem.name"/>
-    <div class="px-5 py-3 border border-b-px border-tertiary">
+    <div class="px-5 py-3 border border-b-px border-tertiary rounded-b-xl">
       <h2 class="font-orbitron text-alive text-2xl text-shadow-glow shadow-alive"><strong>{{props.personagem.name}}</strong></h2>
       <p class="atributo-personagem">Status: {{props.personagem.status}}</p>
       <p class="atributo-personagem">Espécie: {{props.personagem.species}}</p>
