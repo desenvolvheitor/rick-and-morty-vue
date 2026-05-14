@@ -46,4 +46,8 @@
     .label-filtro {
         @apply text-main-text font-medium mb-1;
     }
+
+    .atributo-personagem {
+        @apply py-2 border-b border-tertiary;
+    }
 }
