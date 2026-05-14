@@ -27,9 +27,13 @@ export const usePersonagemStore = defineStore('personagem', () => {
   });
 
   async function buscarPersonagens(): Promise<void> {
+    const tempoMinimo = new Promise(resolve => setTimeout(resolve, 650));
     carregando.value = true;
     try {
-      const dados = await personagemService.listarPersonagens(filtros);
+      const [dados] = await Promise.all([
+        personagemService.listarPersonagens(filtros),
+        tempoMinimo
+      ]);
       listaPersonagens.value = dados.results;
       informacoesPaginacao.value = dados.info;
     } catch (erro) {
