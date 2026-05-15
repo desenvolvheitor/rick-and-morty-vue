@@ -26,7 +26,7 @@ onUnmounted(() => {
     <div class="flex items-center">
       <button class="text-main-text lg:hidden" @click="personagemStore.toggleMenu">&#9776;</button>
       <img src="../../../public/favicon.svg" alt="Ícone do site" class="h-14">
-      <h1 class="text-alive font-orbitron text-base font-bold text-shadow-glow lg:text-lg">Rick and Morty Explorer</h1>
+      <h1 class="text-alive font-orbitron text-base font-bold text-shadow-glow lg:text-xl">Rick and Morty Explorer</h1>
     </div>
 
     <p class="text-sm text-main-text text-right">{{ dataHora }}</p>
