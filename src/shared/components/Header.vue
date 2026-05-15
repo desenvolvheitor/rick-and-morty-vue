@@ -22,7 +22,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="px-4 py-1 bg-primary flex justify-between items-center border-b border-tertiary">
+  <header class="px-4 py-1 bg-primary flex justify-between items-center border-b border-tertiary lg:px-6">
     <div class="flex items-center">
       <button class="text-main-text lg:hidden" @click="personagemStore.toggleMenu">&#9776;</button>
       <img src="../../../public/favicon.svg" alt="Ícone do site" class="h-14">
