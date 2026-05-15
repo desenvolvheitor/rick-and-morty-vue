@@ -1,12 +1,10 @@
+import { precacheAndRoute } from 'workbox-precaching';
+
+declare let self: ServiceWorkerGlobalScope;
+
+precacheAndRoute(self.__WB_MANIFEST);
+
 const CACHE_NAME = 'rick-morty-v1';
-
-self.addEventListener('install', () => {
-  self.skipWaiting();
-});
-
-self.addEventListener('activate', () => {
-  event.waitUntil(clients.claim());
-});
 
 self.addEventListener('fetch', (event) => {
   if (event.request.destination === 'image') {
@@ -22,3 +20,6 @@ self.addEventListener('fetch', (event) => {
     );
   }
 });
+
+self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('activate', (event) => event.waitUntil(clients.claim()));
