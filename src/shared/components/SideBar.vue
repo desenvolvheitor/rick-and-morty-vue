@@ -52,8 +52,7 @@ const genderOptions = [
 </script>
 
 <template>
-  <aside
-    class="bg-primary border-r border-tertiary flex flex-col gap-12 transition-transform duration-200 fixed p-7 lg:relative z-50 h-dvh lg:h-auto w-4/5 lg:w-full">
+  <aside class="bg-primary border-r border-tertiary flex flex-col gap-12 fixed -translate-x-full transition-transform duration-200 ease-out lg:translate-x-0 p-7 lg:relative z-50 h-dvh lg:h-auto w-4/5 lg:w-full" :class="{ 'translate-x-0' : personagemStore.isMenuAberto, }">
     <form @submit.prevent>
       <div class="flex flex-col">
         <label for="search" class="label-filtro">Busca</label>
