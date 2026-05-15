@@ -22,9 +22,7 @@ onMounted(() => personagemStore.buscarPersonagens());
       <SideBar />
 
       <main class="bg-secondary p-[30px_40px] overflow-y-auto">
-        <router-view>
           <ListaPersonagens />
-        </router-view>
       </main>
     </div>
 
