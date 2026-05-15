@@ -6,6 +6,7 @@ export const usePersonagemStore = defineStore('personagem', () => {
   const listaPersonagens = ref<Personagem[]>([]);
   const carregando = ref<boolean>(false);
   const exibirModal = ref<boolean>(false);
+  const isMenuAberto = ref<boolean>(false);
   const personagemSelecionado = ref<Personagem | null>(null);
   const informacoesPaginacao = ref<RespostaApiPersonagem['info'] | null>(null);
 
@@ -54,6 +55,10 @@ export const usePersonagemStore = defineStore('personagem', () => {
     }
   };
 
+  function toggleMenu(): void {
+    isMenuAberto.value = !isMenuAberto.value;
+  };
+
   function selecionarPersonagem(personagem: Personagem): void {
     personagemSelecionado.value = personagem;
     exibirModal.value = true;
@@ -90,12 +95,14 @@ export const usePersonagemStore = defineStore('personagem', () => {
     filtros,
     informacoesPaginacao,
     exibirModal,
+    isMenuAberto,
     personagemSelecionado,
     paginaAnteriorDisponivel,
     proximaPaginaDisponivel,
     ocorreuErro,
     buscarPersonagens,
     limparFiltros,
+    toggleMenu,
     selecionarPersonagem,
     fecharModal,
     proximaPagina,
