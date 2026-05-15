@@ -11,7 +11,7 @@ onMounted(() => personagemStore.buscarPersonagens());
 </script>
 
 <template>
-  <div class="flex flex-col h-screen overflow-hidden">
+  <div class="flex flex-col h-dvh overflow-hidden">
 
     <Header />
 

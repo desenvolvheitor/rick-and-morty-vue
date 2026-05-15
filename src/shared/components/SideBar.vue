@@ -53,7 +53,7 @@ const genderOptions = [
 
 <template>
   <aside
-    class="bg-primary border-r border-tertiary flex flex-col gap-12 transition-transform duration-200 fixed p-7 lg:relative z-50 h-screen lg:h-auto w-4/5 lg:w-full">
+    class="bg-primary border-r border-tertiary flex flex-col gap-12 transition-transform duration-200 fixed p-7 lg:relative z-50 h-dvh lg:h-auto w-4/5 lg:w-full">
     <form @submit.prevent>
       <div class="flex flex-col">
         <label for="search" class="label-filtro">Busca</label>
