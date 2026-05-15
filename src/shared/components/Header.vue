@@ -22,11 +22,11 @@ onUnmounted(() => {
 <template>
   <header class="px-8 py-[2px] bg-primary flex justify-between items-center border-b border-tertiary">
     <div class="flex items-center">
-      <button class="hidden">&#9776;</button>
+      <button class="text-main-text lg:hidden">&#9776;</button>
       <img src="../../../public/favicon.svg" alt="Ícone do site" class="h-14">
       <h1 class="text-alive font-orbitron text-xl font-bold text-shadow-glow">Rick and Morty Explorer</h1>
     </div>
 
-    <p class="text-sm text-main-text">{{ dataHora }}</p>
+    <p class="text-sm text-main-text text-right">{{ dataHora }}</p>
   </header>
 </template>
