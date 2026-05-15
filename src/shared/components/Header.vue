@@ -22,10 +22,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="px-4 py-1 bg-primary flex justify-between items-center border-b border-tertiary lg:px-6">
+  <header class="px-4 py-1 bg-primary flex justify-between items-center border-b border-tertiary min-h-14 lg:px-6">
     <div class="flex items-center">
-      <button class="text-main-text lg:hidden" @click="personagemStore.toggleMenu">&#9776;</button>
-      <img src="../../../public/favicon.svg" alt="Ícone do site" class="h-14">
+      <button class="text-main-text lg:hidden text-2xl mr-4" @click="personagemStore.toggleMenu">&#9776;</button>
+      <img src="../../../public/favicon.svg" alt="Ícone do site" class="h-14 hidden lg:block">
       <h1 class="text-alive font-orbitron text-base font-bold text-shadow-glow lg:text-xl">Rick and Morty Explorer</h1>
     </div>
 
