@@ -26,9 +26,12 @@ export const usePersonagemStore = defineStore('personagem', () => {
     gender: ''
   });
 
+  const ocorreuErro = ref<boolean>(false);
+
   async function buscarPersonagens(): Promise<void> {
     const tempoMinimo = new Promise(resolve => setTimeout(resolve, 650));
     carregando.value = true;
+    ocorreuErro.value = false;
     try {
       const [dados] = await Promise.all([
         personagemService.listarPersonagens(filtros),
@@ -36,10 +39,16 @@ export const usePersonagemStore = defineStore('personagem', () => {
       ]);
       listaPersonagens.value = dados.results;
       informacoesPaginacao.value = dados.info;
-    } catch (erro) {
-      console.error('Erro ao carregar personagens:', erro);
-      listaPersonagens.value = [];
-      informacoesPaginacao.value = null;
+    } catch (erro: any) {
+      if (erro.response?.status === 404) {
+        listaPersonagens.value = [];
+        informacoesPaginacao.value = null;
+        ocorreuErro.value = false;
+      } else {
+        console.error('Erro técnico:', erro);
+        ocorreuErro.value = true;
+        listaPersonagens.value = [];
+    }
     } finally {
       carregando.value = false;
     }
@@ -84,6 +93,7 @@ export const usePersonagemStore = defineStore('personagem', () => {
     personagemSelecionado,
     paginaAnteriorDisponivel,
     proximaPaginaDisponivel,
+    ocorreuErro,
     buscarPersonagens,
     limparFiltros,
     selecionarPersonagem,
